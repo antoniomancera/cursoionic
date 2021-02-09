@@ -30,6 +30,21 @@ export class InicioPage implements OnInit {
       icon:'beaker-appstore',
       name:'Avatar',
       redirectTo:'/avatar'
+    },
+    {
+      icon:'radio-button-off-outline',
+      name:'Button',
+      redirectTo:'/button'
+    },
+    {
+      icon:'card-outline',
+      name:'Cards',
+      redirectTo:'/card'
+    },
+    {
+      icon:'checkmark-circle-outline',
+      name:'Check',
+      redirectTo:'/check'
     }
   ];
 
