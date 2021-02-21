@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
-
-interface Componente{
-  icon:string;
-  name:string;
-  redirectTo:string;
-}
+import { Component, ComponentRef, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
+import {Componente} from '../../interfaces/interfaces'
 
 @Component({
   selector: 'app-inicio',
@@ -15,74 +12,17 @@ interface Componente{
 export class InicioPage implements OnInit {
 
 
-  componentes:any[]=[
-    {
-      icon:'american-football-outline',
-      name:'Action Sheet',
-      redirectTo:'/action-sheet'
-    },
-    {
-      icon:'alert-circle-outline',
-      name:'Alert',
-      redirectTo:'/alert'
-    },
-    {
-      icon:'beaker-appstore',
-      name:'Avatar',
-      redirectTo:'/avatar'
-    },
-    {
-      icon:'radio-button-off-outline',
-      name:'Button',
-      redirectTo:'/button'
-    },
-    {
-      icon:'card-outline',
-      name:'Cards',
-      redirectTo:'/card'
-    },
-    {
-      icon:'checkmark-circle-outline',
-      name:'Check',
-      redirectTo:'/check'
-    },
-    {
-      icon:'calendar-outline',
-      name:'DateTime',
-      redirectTo:'/date-time'
-    },
-    {
-      icon:'car-outline',
-      name:'Fab',
-      redirectTo:'/fab'
-    },
-    {
-      icon:'grid-outline',
-      name:'Grid',
-      redirectTo:'/greed'
-    },
-    {
-      icon:'infinite-outline',
-      name:'infinite',
-      redirectTo:'/infinite'
-    },
-    {
-      icon:'hammer-outline',
-      name:'Input',
-      redirectTo:'/input'
-    },
-    {
-      icon:'list-outline',
-      name:'List-Sliding',
-      redirectTo:'/list'
-    }
-  ];
+  componentes:Observable<Componente[]>;
 
 
-  constructor() { }
+  constructor(private menuCtrl:MenuController,
+              private dataService:DataService) { }
 
   ngOnInit() {
+    this.componentes=this.dataService.getMenuOpts();
   }
-
+  mostrarMenu(){
+    this.menuCtrl.open('first');
+  }
 }
 
