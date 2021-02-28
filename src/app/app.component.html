@@ -9,12 +9,16 @@
     <ion-content>
 
       <ion-list>
-        <ion-item *ngFor="let c of componentes | async"
-        [routerLink]="c.redirectTo"
-        detail>
-          <ion-icon [name]="c.icon" slot="start"></ion-icon>
-          {{c.name}}
-        </ion-item>
+        <ion-menu-toggle *ngFor="let c of componentes | async">
+
+
+          <ion-item
+          [routerLink]="c.redirectTo"
+          detail>
+            <ion-icon [name]="c.icon" slot="start"></ion-icon>
+            {{c.name}}
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
 
     </ion-content>
